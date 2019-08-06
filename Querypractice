@@ -1,0 +1,41 @@
+ Select * From transaction_data
+ Limit 10;
+ 
+ Select full_name, email, zip from transaction_data
+ Where zip = 20252;
+ 
+ Select full_name, email From transaction_data
+ Where full_name = 'Art Vandelay'
+ 		Or full_name LIKE '% der %';
+    
+Select ip_address, email from transaction_data
+Where ip_address LIKE '10.%';
+
+Select email from transaction_data
+Where email Like '%temp_email.com';
+
+Select * from transaction_data
+Where ip_address Like '120.%' 
+	AND full_name like 'John%';
+  
+   Select * From users
+ Limit 20;
+ 
+ Select email from users
+ Where birthday Between '1980-01-01' AND '1989-12-31';
+ 
+ Select emails, created_at from users
+ Where created_at < '2017-05-01';
+ 
+ Select email from users
+ Where test = 'bears';
+ 
+ Select email from users
+ Where campaign Like 'BBB-%';
+ 
+ Select email from users
+ Where  campaign Like '%-2';
+ 
+ Select emails from users
+Where campaign IS NOT NULL
+	And test IS NOT NULL;
