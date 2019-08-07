@@ -61,5 +61,11 @@ SELECT category,
    Round(Sum(price*downloads),0) AS 'Total Sales',
    Round(AVG(downloads), 0) As 'Downloads'
 FROM fake_apps
-GROUP BY category
-ORDER BY Round(Sum(price*downloads),0) DESC;
+GROUP BY 1
+ORDER BY 2 DESC;
+
+
+Select price, Round(Avg(downloads)), Count(*)
+From fake_apps
+Group By price
+Having COUNT (*) > 10;
