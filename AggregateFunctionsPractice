@@ -1,0 +1,123 @@
+Select Count (*)
+From users
+Where email Like '%.com';
+
+Select first_name, Count (*)
+From users
+Group By first_name
+Order By Count(*) Desc;
+
+Select Round(watch_duration_in_minutes, 0) as 'Duration', Count(*) as 'Count'
+From watch_history
+Group By Round(watch_duration_in_minutes, 0)
+Order By Round(watch_duration_in_minutes, 0) Asc;
+
+Select user_id as 'Users', Sum(amount) as 'Total Amount'
+From payments
+Where status = 'paid'
+Group By 1
+Order By 2 Desc;
+
+Select user_id, Sum(watch_duration_in_minutes) as 'Total Watch Time'
+From watch_history
+Group By 1
+Having Sum(watch_duration_in_minutes) > 400;
+
+Select Round(Sum (watch_duration_in_minutes), 0)
+from watch_history;
+
+Select pay_date, Sum(amount)
+From payments
+Where status = 'paid'
+Group By 1
+Order By 2 Desc;
+
+Select Avg(amount)
+From payments
+Where status = 'paid';
+
+Select Max (watch_duration_in_minutes) as 'Max', Min(watch_duration_in_minutes) as 'Min'
+From watch_history;
+
+select *
+from startups;
+
+Select Count (*)
+from startups;
+
+Select Sum (valuation)
+from startups;
+
+Select Max (raised)
+from startups
+where stage = 'Seed';
+
+Select Min(founded)
+from startups;
+
+Select Avg(valuation)
+from startups;
+
+Select category, Avg(valuation)
+from startups
+Group By 1;
+
+Select category,Round(Avg(valuation), 2)
+from startups
+Group By 1
+Order by 2 Desc;
+
+Select category, Count(*)
+from startups
+Group By 1
+Having Count(*) > 3
+order By 2 Desc;
+
+Select location, Avg(employees)
+from startups
+Group By 1
+Having Avg(employees) > 500;
+
+ Select title, score
+ From hacker_news
+ Order By Score Desc
+ Limit 5;
+ 
+ Select Sum (score)
+ from hacker_news;
+ 
+ Select user, Sum(score)
+ from hacker_news
+ Group By user
+ Having Sum(score) > 200
+ Order By 2 Desc;
+ 
+ Select (517 + 309 + 204 + 282) / 6366.0;
+ 
+
+ Select user, Count(url)
+ from hacker_news
+ Where url Like '%watch?v=dQw4w9WgXcQ%'
+ Group By 1
+ Order By 2 Desc;
+ 
+ Select Case
+ 		When url Like '%github.com%' THen 'Github'
+ 		When url Like '%medium.com%' Then 'Medium'
+ 		When url Like '%nytimes.com%' Then 'NYT'
+ 		Else 'Other'
+ 	End As 'Source', Count(*)
+ From hacker_news
+ Group By 1;
+ 
+ Select timestamp
+ from hacker_news
+ Limit 10;
+ 
+ Select strftime('%H', timestamp) as 'Hour', Round(Avg(score), 0) as 'Rounded Average Score', Count(*) as 'Stories'
+ from hacker_news
+ Where timestamp IS NOT NULL
+ Group By 1
+ Order By 1;
+ 
+
