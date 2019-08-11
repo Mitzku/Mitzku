@@ -120,4 +120,43 @@ Having Avg(employees) > 500;
  Group By 1
  Order By 1;
  
+ 
+  Select *
+ from met
+ Limit 10;
+ 
+ Select Count(*)
+ from met
+ where department = 'American Decorative Arts';
+ 
+ Select category, Count(*)
+ from met
+ Where category LIKE '%celery%'
+ Group by 1;
+ 
+ Select Min(date)
+ from met;
+ 
+ Select date, title, medium
+ From met
+ Where date LIKE '%1600%';
+ 
+ Select country, Count(*)
+ From met
+ Where country IS NOT NULL
+ Group by 1
+ Order By 2 DESC
+ Limit 10;
+ 
+ Select category, Count(*)
+ from met
+ Group By 1
+ Having Count(*)>100;
+ 
+ Select medium, Count(*)
+ from met
+ Where medium Like '%gold%' OR 
+  medium Like'%silver%'
+ Group By 1
+ Order By 2 Desc;
 
