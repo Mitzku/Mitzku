@@ -160,3 +160,89 @@ Having Avg(employees) > 500;
  Group By 1
  Order By 2 Desc;
 
+
+ Select *
+ From transactions
+ Limit 10;
+ 
+ Select Sum(money_in)
+ From transactions;
+ 
+ Select Sum (money_out)
+ from transactions;
+ 
+ Select Sum(money_in) - Sum(money_out)
+ from transactions;
+ 
+ Select Count(money_in)
+   from transactions
+   Where currency = 'BIT'
+   	And currency IS NOT NULL; 
+    
+    Select Max(money_in) as 'BIT Incoming', 
+    	MAX(money_out) as 'BIT Outgoing', 
+      Max(money_in) - MAX(money_out) as 'Balance'
+    from transactions; 
+    
+    Select Round(Avg(money_in), 0) as 'Average ETH Inflow'
+     from transactions
+       Where currency = 'ETH';
+       
+  	Select date, 
+    	Round(Avg(money_in), 2) as'Average Inflow',
+      Round(Avg(money_out), 2) as 'Average Outflow'
+      from transactions
+    Group By 1 
+    	Order By 1 Desc; 
+    	
+SELECT *
+FROM orders
+LIMIT 3;
+
+SELECT *
+FROM customers
+LIMIT 3;
+
+
+SELECT *
+FROM orders
+JOIN customers
+	ON orders.customer_id = customers.customer_id;
+ 
+ // And a 100% correct one of this
+ -- First query
+SELECT *
+FROM orders
+JOIN subscriptions
+	ON orders.subscription_id = subscriptions.subscription_id;
+
+-- Second query
+SELECT *
+FROM orders
+JOIN subscriptions
+	ON orders.subscription_id = subscriptions.subscription_id
+WHERE subscriptions.description = 'Fashion Magazine';
+
+
+  SELECT COUNT(*)
+FROM newspaper;
+
+SELECT COUNT(*)
+FROM online;
+
+SELECT COUNT(*)
+FROM newspaper
+JOIN online
+	ON newspaper.id = online.id;
+  
+  
+  Select *
+From newspaper
+LEFT JOIN online
+	On newspaper.id = online.id;
+
+Select *
+From newspaper
+LEFT JOIN online
+	On newspaper.id = online.id
+	Where online.id IS NULL;
