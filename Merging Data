@@ -1,0 +1,51 @@
+SELECT *
+FROM orders
+LIMIT 3;
+
+SELECT *
+FROM customers
+LIMIT 3;
+
+
+SELECT *
+FROM orders
+JOIN customers
+	ON orders.customer_id = customers.customer_id;
+ 
+ // And a 100% correct one of this
+ -- First query
+SELECT *
+FROM orders
+JOIN subscriptions
+	ON orders.subscription_id = subscriptions.subscription_id;
+
+-- Second query
+SELECT *
+FROM orders
+JOIN subscriptions
+	ON orders.subscription_id = subscriptions.subscription_id
+WHERE subscriptions.description = 'Fashion Magazine';
+
+
+  SELECT COUNT(*)
+FROM newspaper;
+
+SELECT COUNT(*)
+FROM online;
+
+SELECT COUNT(*)
+FROM newspaper
+JOIN online
+	ON newspaper.id = online.id;
+  
+  
+  Select *
+From newspaper
+LEFT JOIN online
+	On newspaper.id = online.id;
+
+Select *
+From newspaper
+LEFT JOIN online
+	On newspaper.id = online.id
+	Where online.id IS NULL;
