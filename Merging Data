@@ -49,3 +49,10 @@ From newspaper
 LEFT JOIN online
 	On newspaper.id = online.id
 	Where online.id IS NULL;
+
+
+Select * 
+From classes
+Join students
+	On classes.id = students.class_id;
+	
