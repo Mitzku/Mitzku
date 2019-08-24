@@ -56,3 +56,30 @@ From classes
 Join students
 	On classes.id = students.class_id;
 	
+SELECT COUNT(*) as 'Newspaper Subscribers'
+FROM newspaper
+WHERE start_month <= 3 
+  AND end_month >= 3;
+  
+Select * 
+From newspaper
+Cross Join months;
+
+Select * 
+From newspaper
+Cross Join months
+Where start_month <= month
+	AND end_month >= month;
+  
+  Select month, Count(*)
+  From newspaper
+  Cross Join months
+  Where start_month <= month
+	AND end_month >= month
+  Group by month;
+  
+  Select *
+From newspaper
+Union
+Select * 
+from online;
