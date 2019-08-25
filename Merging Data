@@ -83,3 +83,57 @@ From newspaper
 Union
 Select * 
 from online;
+
+
+With previous_query as 
+	(Select customer_id, Count(subscription_id) as 	 'subscriptions'
+	From orders
+	Group By customer_id
+)
+Select customers.customer_name, previous_query.subscriptions
+From previous_query
+Join customers
+	On previous_query.customer_id = customers.customer_id;
+	
+	
+Select *
+From subscriptions
+Left Join orders 
+	On subscriptions.subscription_id = orders.subscription_id
+  Where orders.subscription_id IS NULL;
+  
+  Select *
+From customers
+Left Join orders 
+	On customers.customer_id = orders.customer_id
+  Where orders.customer_id IS NOT NULL;
+  
+  *Detecting irregularities*
+  
+  Select *
+From subscriptions
+Left Join orders 
+	On subscriptions.subscription_id = orders.subscription_id
+  Where orders.subscription_id IS NULL;
+  
+  
+  With unidentified_customer as ( Select *
+From customers
+Left Join orders 
+	On customers.customer_id = orders.customer_id
+  Where orders.customer_id IS NULL
+  )
+  Select *
+  from subscriptions
+  Cross Join unidentified_customer
+  Limit 2;
+  
+  Select *
+From customers
+Left Join orders 
+	On customers.customer_id = orders.customer_id
+  Where orders.customer_id IS NULL;
+  
+  ***
+  
+  
