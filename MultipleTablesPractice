@@ -1,0 +1,102 @@
+Select * 
+From trips;
+
+Select * 
+From riders;
+
+Select * 
+From cars;
+
+Select riders.first,
+	riders.last,
+  cars.model
+From cars, riders;
+
+Select trips.id,
+	riders.username
+From trips Left Join riders
+	On trips.rider_id = riders.id;
+  
+  Select *
+  From trips Join cars
+  	On trips.car_id = cars.id;
+    
+  Select *
+  From riders 
+  Union 
+  Select *
+  From riders2;
+  
+  Select Avg(cost)
+  From trips;
+  
+  Select *
+  From riders
+  Where total_trips < 500
+  Union
+  Select *
+  From riders2
+  Where total_trips < 500;
+  
+  Select Count(*)
+  From cars
+  Where status = 'active';
+  
+  Select *
+  From cars
+  Order By trips_completed Desc;
+  
+  
+  
+  Select *
+From countries
+Limit 3;
+
+Select *
+From population_years
+Limit 3;
+
+Select Count(*)
+From countries
+Where continent = 'Africa';
+
+Select Sum(population)
+From countries Join population_years
+	On countries.id = population_years.country_id
+  Where countries.continent = 'Oceania'
+  	And population_years.year = 2005;
+    
+Select countries.continent, Avg(population)
+From countries Join population_years
+	On countries.id = population_years.country_id
+  	Where countries.continent = 'South America'
+    And population_years.year = 2003;
+    
+Select *
+  From countries Join population_years
+  	On countries.id = population_years.country_id
+    Where population_years.year = 2007
+    Order By population_years.population Asc
+    Limit 5;
+  
+Select Avg(population)
+From countries Join population_years
+	On countries.id = population_years.country_id
+  Where countries.name = 'Poland';
+  
+Select * 
+From countries 
+  Where countries.name Like '%The%';
+  
+  Select Sum(population_years.population) as 'eins', countries.continent, population_years.year
+From countries Join population_years
+		On countries.id = population_years.country_id
+ Where population_years.year = 2010
+ Group By countries.continent
+ Order By eins Desc;
+ 
+ 
+
+  
+  
+  
