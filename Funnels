@@ -1,0 +1,3 @@
+Select question_text, Count(*)
+from survey_responses
+Group By question_text;
