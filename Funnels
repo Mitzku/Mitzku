@@ -1,3 +1,104 @@
 Select question_text, Count(*)
 from survey_responses
 Group By question_text;
+
+
+Select modal_text, Count(user_id)
+From onboarding_modals
+Group By 1
+Order by 1; 
+
+SELECT modal_text,
+  COUNT(CASE
+    WHEN ab_group = 'control' THEN user_id
+    END) AS 'control_clicks',
+  Count(Case 
+    When ab_group = 'variant' Then user_id
+    End) As 'variant_clicks'
+FROM onboarding_modals
+GROUP BY 1
+ORDER BY 1;
+
+ With b as (Select *
+      From browse), c as (Select * from checkout), p as (Select * from purchase)
+Select Distinct b.browse_date, 
+			b.user_id, 
+      c.user_id IS NOT NULL as 'is_checkout',
+      p.user_id IS NOT NULL as 'is_purchase'
+From b 
+Left Join c
+	On b.user_id = c.user_id
+Left Join p
+	On b.user_id = p.user_id
+Limit 50;
+
+
+WITH funnels AS (
+  SELECT DISTINCT b.browse_date,
+     b.user_id,
+     c.user_id IS NOT NULL AS 'is_checkout',
+     p.user_id IS NOT NULL AS 'is_purchase'
+  FROM browse AS 'b'
+  LEFT JOIN checkout AS 'c'
+    ON c.user_id = b.user_id
+  LEFT JOIN purchase AS 'p'
+    ON p.user_id = c.user_id)
+SELECT COUNT(*) AS 'num_browse', 
+		Sum(is_checkout) as 'num_checkout', 
+    Sum(is_purchase) as 'num_purchase',
+		1.0 * Sum(is_checkout) / Count(user_id),
+    1.0 * Sum(is_purchase) / Sum(is_checkout)
+FROM funnels
+Where is_checkout IS NOT NULL;
+
+
+WITH funnels AS (
+  SELECT DISTINCT b.browse_date,
+     b.user_id,
+     c.user_id IS NOT NULL AS 'is_checkout',
+     p.user_id IS NOT NULL AS 'is_purchase'
+  FROM browse AS 'b'
+  LEFT JOIN checkout AS 'c'
+    ON c.user_id = b.user_id
+  LEFT JOIN purchase AS 'p'
+    ON p.user_id = c.user_id)
+SELECT browse_date,
+		COUNT(*) AS 'num_browse',
+   	SUM(is_checkout) AS 'num_checkout',
+   	SUM(is_purchase) AS 'num_purchase',
+   	Round(1.0 * SUM(is_checkout) / COUNT(user_id), 2) AS 'browse_to_checkout',
+   	Round(1.0 * SUM(is_purchase) / SUM(is_checkout), 2) AS 'checkout_to_purchase'
+FROM funnels
+Group By browse_date
+Order By browse_date;
+
+     
+--- building a funnel and working with it      
+       
+With funnels as (Select quiz.user_id,
+ 			home_try_on.user_id IS NOT NULL as 'home_try',
+      home_try_on.number_of_pairs,
+      purchase.user_id IS NOT NULL as 'bought'
+      From quiz 
+		Left Join home_try_on 
+ 			On quiz.user_id = home_try_on.user_id
+		Left Join purchase 
+			On purchase.user_id = quiz.user_id
+      )
+Select Count (*), 
+		Sum(home_try),
+    Sum(bought)    
+From funnels
+Where number_of_pairs Like '5 pairs';
+
+With funnels as (Select *
+      From quiz 
+		Left Join home_try_on 
+ 			On quiz.user_id = home_try_on.user_id
+		Left Join purchase 
+			On purchase.user_id = quiz.user_id
+      )
+Select product_id, Count (product_id)  as 'eins'
+From funnels
+Group By product_id
+Order By eins Desc;
