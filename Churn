@@ -1,0 +1,35 @@
+
+
+Select *
+From subscriptions
+Limit 3;
+
+
+-- 
+Select Count (*)
+From subscriptions
+Where subscription_start < '2017-01-01'
+	And subscription_end IS NULL; 
+       
+       
+Select 1.0 * (
+Select Count(*)
+From subscriptions
+Where subscription_start < '2017-01-01'
+  And( subscription_end 
+      between '2017-01-01' 
+      AND '2017-01-31')
+) / (
+Select Count (*)
+From subscriptions
+Where subscription_start < '2017-01-01'
+ And (
+   (subscription_end >= '2017-01-01')
+   Or (subscription_end IS NULL)
+   )
+)
+as result;
+
+  
+  
+  
