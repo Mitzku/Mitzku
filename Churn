@@ -32,4 +32,66 @@ as result;
 
   
   
-  
+  With enrollments As( 
+  Select * 
+  from subscriptions
+  Where subscription_start < '2017-01-01'
+  	And (subscription_end >= '2017-01-01'
+        Or subscription_end IS NULL)
+),
+status As (
+Select
+	Case
+		When subscription_end > '2017-01-31'
+  	Or subscription_end IS NULL
+  Then 0
+  Else 1
+  End as is_cancelled,
+  Case
+  	When subscription_start < '2017-01-01'
+  	AND (subscription_end >= '2017-01-01')
+  	OR (subscription_end IS NULL)
+  	Then 1
+  	Else 0
+  	End as is_active
+  From enrollments
+  		 )      
+Select 1.0 * Sum(is_cancelled) / Sum(is_active)
+From status;
+
+
+WITH months as
+(SELECT
+  '2017-01-01' as first_day,
+  '2017-01-31' as last_day
+UNION
+SELECT
+  '2017-02-01' as first_day,
+  '2017-02-28' as last_day
+UNION
+SELECT
+  '2017-03-01' as first_day,
+  '2017-03-31' as last_day
+)
+SELECT *
+FROM months;
+
+WITH months AS
+(SELECT
+  '2017-01-01' as first_day,
+  '2017-01-31' as last_day
+UNION
+SELECT
+  '2017-02-01' as first_day,
+  '2017-02-28' as last_day
+UNION
+SELECT
+  '2017-03-01' as first_day,
+  '2017-03-31' as last_day
+),
+cross_join as(
+	Select *
+	From subscriptions Cross Join months)
+SELECT *
+FROM cross_join
+LIMIT 100;
