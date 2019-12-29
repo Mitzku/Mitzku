@@ -1,0 +1,29 @@
+Create table TWHandles (
+    profileUrl VarChar (100),
+    screenName VarChar (30),
+    userId Int Primary KEY,
+    name VarChar (30),
+    imgUrl VarChar (2),
+    backgroundImg VarChar (2),
+    bio VarChar (5000),
+    location VarChar (30),
+    createdAt VarChar (30),
+    followersCount Int,
+    friendsCount Int,
+    tweetsCount Int,
+    Query  VarChar (30),
+    timestamp TimeStamp,
+    website  VarChar (30),
+    certified  VarChar (30)
+);
+
+Describe TWHandles;
+
+
+*fixing the server settings*
+SHOW VARIABLES LIKE "secure_file_priv";
+
+*continuation*
+LOAD DATA 
+INFILE "test.xlsx" 
+Into Table TWHandles;
