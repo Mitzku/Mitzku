@@ -1,0 +1,23 @@
+*A non-correlated subquery is a subquery that can be run independently of the outer query and as we saw, 
+can be used to complete a multi-step transformation*
+
+Select *
+From flights
+Where origin in (
+  Select code
+  From airports
+  Where elevation < 2000);
+  
+  
+  
+Select *
+From flights
+Where origin in (
+  Select code
+  From airports
+  Where faa_region = 'ASO');
+  
+  
+  * we can also perform transformations on a single table*
+  
+  
