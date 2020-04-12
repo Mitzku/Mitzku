@@ -1,0 +1,11 @@
+*Table transformation through the union clause. Unions allow us to utilize information from multiple tables in our queries.*
+
+Merge the rows, called a join.
+Merge the columns, called a union.
+
+Select brand From legacy_products
+Union
+Select brand From new_products;
+
+
+
