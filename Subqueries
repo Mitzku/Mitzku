@@ -1,3 +1,5 @@
+*Subqueries are used to complete an SQL transformation by nesting one query within another query.*
+
 *A non-correlated subquery is a subquery that can be run independently of the outer query and as we saw, 
 can be used to complete a multi-step transformation*
 
@@ -18,6 +20,57 @@ Where origin in (
   Where faa_region = 'ASO');
   
   
-  * we can also perform transformations on a single table*
+  * we can also perform transformations on a single table
+  tricky to understand the group by here. I get it but the 
+  thought process seems quite complex. Also, why to have the 'a.' 
+  here as table indicatorNEED TO PRACTICE THIS*
+  
+  
+  
+SELECT a.dep_month,
+       a.dep_day_of_week,
+       AVG(a.flight_distance) AS average_distance
+  FROM (
+        SELECT dep_month,
+              dep_day_of_week,
+               dep_date,
+               sum(distance) AS flight_distance
+          FROM flights
+         GROUP BY 1,2,3
+       ) a
+ GROUP BY 1,2
+ ORDER BY 1,2;
+ 
+ 
+ *In a correlated subquery, the subquery can not be run independently of the outer query.*
+ 
+ Find the id of the flights whose distance is below average for their carrier.
+ 
+
+Select id
+From flights as f
+Where distance < (
+  Select Avg(distance)
+  from flights
+  where carrier = f.carrier
+);
+
+
+*Using the same pattern, write a query to view flights by origin, flight id, and sequence number. 
+Alias the sequence number column as flight_sequence_number.*
+ 
+ 
+ SELECT origin, id,
+    (SELECT COUNT(*)
+FROM flights f
+WHERE f.id < flights.id
+AND f.origin=flights.origin) + 1
+ AS flight_sequence_number
+FROM flights;
+
+
+
+
+ 
   
   
