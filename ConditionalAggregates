@@ -1,0 +1,54 @@
+SELECT origin, id,
+    (SELECT COUNT(*)
+FROM flights f
+WHERE f.id < flights.id
+AND f.origin=flights.origin) + 1
+ AS flight_sequence_number
+FROM flights;
+
+Select Count (*) From flights
+Where arr_time IS NOT NULL AND destination = "ATL"
+;
+
+
+SELECT
+    CASE
+        WHEN elevation < 500 THEN 'Low'
+        WHEN elevation BETWEEN 500 AND 1999 THEN 'Medium'
+        WHEN elevation >= 2000 THEN 'High'
+        ELSE 'Unknown'
+    END AS elevation_tier
+    , COUNT(*)
+FROM airports
+GROUP BY 1;
+
+
+
+Select state, fac_type, Count(
+    Case 
+      When elevation < 1000 Then 1 Else NULL
+      End
+) as count_low_elevation_airports
+From airports
+ Where fac_type = "AIRPORT"
+Group By 1;
+
+
+
+Select origin, (100.0*(Sum(
+      Case
+        When carrier = 'DL' Then distance Else 0
+        End))/Sum(distance)) as percentage_flight_distance_from_delta
+    From flights
+    Group By origin
+  ;
+  
+  
+Select state, (100.0*(Count(
+      Case
+        When elevation >= 2000 Then 1 Else Null
+        End))/Count(id)) as percentage_high_elevation_airports
+    From airports
+    Group By state
+    Order By 2 Desc
+  ;
