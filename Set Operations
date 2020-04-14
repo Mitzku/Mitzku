@@ -9,3 +9,40 @@ Select brand From new_products;
 
 
 
+
+SELECT id, sale_price FROM order_items
+UNION ALL
+SELECT id, sale_price FROM order_items_historic;
+
+  Select id, Avg(sale_price)
+From(
+Select sale_price From order_items
+Union All
+Select sale_price From order_items_historic)
+;
+
+*INTERSECT & EXCEPT*
+
+*INTERSECT is used to combine two SELECT statements, but returns rows only from the first SELECT statement 
+that are identical to a row in the second SELECT statement. This means that it returns only common rows 
+returned by the two SELECT statements.*
+
+*EXCEPT returns distinct rows from the first SELECT statement that aren’t output by the second SELECT statement.*
+
+Select category From new_products
+
+INTERSECT 
+
+Select category From legacy_products; 
+
+
+
+Select category From legacy_products
+
+Except 
+
+Select category From new_products; 
+
+
+
+
