@@ -194,4 +194,21 @@ Having Avg(employees) > 500;
       from transactions
     Group By 1 
     	Order By 1 Desc; 
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
     	
