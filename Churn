@@ -188,6 +188,8 @@ LIMIT 100;
 * provide a list of months, with their corresponding number of 
 active users at the beginning of the month and the number of those users who cancel during the month*
 
+
+
 WITH months AS
 (SELECT
   '2017-01-01' as first_day,
@@ -220,9 +222,12 @@ CASE
   ELSE 0
 END as is_canceled
 FROM cross_join),
-status_aggregate AS(
-  Select  month, Sum(is_active), Sum(is_canceled) 
-  From status
-  Group By month)
-SELECT *
-FROM status_aggregate;
+status_aggregate AS
+(SELECT
+  month,
+  SUM(is_active) as active,
+  SUM(is_canceled) as canceled
+FROM status
+GROUP BY month)
+Select month, 1.0 * canceled/active as churn_rate
+From status_aggregate;
