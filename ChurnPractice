@@ -1,0 +1,85 @@
+A streaming video startup is interested in measuring their user churn rate. In this project, you’ll be helping them answer 
+these questions about their churn:
+
+1. Get familiar with the company.
+ 
+How many months has the company been operating? Which months do you have enough information to calculate a churn rate?
+What segments of users exist?
+
+
+ Select *
+ From subscriptions
+ Limit 100;
+ 
+ 
+ Select Distinct segment
+ From subscriptions;
+ 
+Select Min(subscription_start), Max(subscription_start)
+From subscriptions;
+
+
+
+2. What is the overall churn trend since the company started? Compare the churn rates between user segments.
+
+With months AS (
+  Select
+  '2017-01-01' as first_day,
+  '2017-01-31' as last_day
+UNION
+SELECT
+  '2017-02-01' as first_day,
+  '2017-02-28' as last_day
+UNION
+SELECT
+  '2017-03-01' as first_day,
+  '2017-03-31' as last_day
+), 
+cross_join as (
+  Select * 
+  From subscriptions
+  Cross Join months
+), 
+status AS (
+  Select id, first_day as month, 
+  Case 
+  When subscription_start < first_day
+  And segment = 87 
+  AND (subscription_end > first_day
+      OR subscription_end IS NULL)
+  Then 1
+  Else 0
+  End as _is_active_87,
+  Case 
+   When subscription_start < first_day
+  And segment = 30
+  AND (subscription_end > first_day
+      OR subscription_end IS NULL)
+  Then 1
+  Else 0
+  End as _is_active_30, 
+  Case
+   When subscription_end BETWEEN (first_day AND last_day)
+   AND segment = 87 
+   Then 1
+   Else 0
+   End as is_canceled_87,
+   Case
+   When subscription_end BETWEEN (first_day AND last_day)
+   AND segment = 30
+   Then 1
+   Else 0
+   End as is_canceled_30
+  From cross_join
+), 
+status_aggregate AS (
+  Select month, Sum(is_active_87) as active_87, Sum(is_active_30) as active_30, Sum(is_canceled_87) as canceled_87, Sum(is_canceled_30) as canceled_30
+  From status
+   Group By month
+); 
+Select month, 1.0 * canceled_87/active_87 as churn_rate87, 1.0 * canceled_30/active_30 as churn_rate30
+From status_aggregate;
+
+
+
+
