@@ -1,0 +1,17 @@
+Select DATETIME(delivery_time)
+from baked_goods;
+
+
+*For Date only*
+SELECT DATE(manufacture_time), count(*) as count_baked_goods
+FROM baked_goods
+GROUP BY DATE(manufacture_time);
+
+
+*For Time only*
+SELECT TIME(manufacture_time), count(*) as count_baked_goods
+FROM baked_goods
+GROUP BY TIME(manufacture_time);
+
+
+*Find the number of baked goods by date of delivery.*
