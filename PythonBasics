@@ -199,5 +199,236 @@ dads_age = calculate_age(2049,1953)
 print("I am " + str(my_age) +" years olf and my dad is "+ str(dads_age) + " years old") 
 
 
+
+def get_boundaries(target, margin):
+  low_limit = target - margin
+  high_limit = target + margin
+  return low_limit, high_limit
+
+low, high = get_boundaries(100, 20)
+
+print("Low: " + str(low) + "\nHigh: " + str(high))
+
+
+
+current_year = 2048
+
+def calculate_age(birth_year):
+  age = current_year - birth_year
+  return age
+
+result = calculate_age(1970)
+
+print(result)
+
+
+
+
+
+def repeat_stuff(stuff, num_repeats = 10):
+  return stuff*num_repeats
+  
+
+lyrics = repeat_stuff("Row ", 3) + "Your Boat. \n"
+song = repeat_stuff(lyrics)
+print(song)
+
+
+
+
+*PRACTICE*
+
+# Write your tenth_power function here:
+def tenth_power(num):
+  return (num ** 10)
+    
+
+# Uncomment these function calls to test your tenth_power function:
+print(tenth_power(1))
+
+# 1 to the 10th power is 1
+
+print(tenth_power(0))
+# 0 to the 10th power is 0
+
+print(tenth_power(2))
+# 2 to the 10th power is 1024
+
+
+
+# Write your square_root function here:
+def square_root(num):
+  return (num ** 0.5)
+
+# Uncomment these function calls to test your square_root function:
+print(square_root(16))
+# should print 4
+print(square_root(100))
+# should print 10
+
+
+
+# Write your win_percentage function here:
+def win_percentage(wins, losses):
+  percentage = wins / (wins + losses)
+  return percentage * 100
+
+# Uncomment these function calls to test your win_percentage function:
+print(win_percentage(5, 5))
+# should print 50
+print(win_percentage(10, 0))
+# should print 100
+
+
+# Write your average function here:
+def average(num1, num2):
+  result = (num1+ num2) /2
+  return result
+
+# Uncomment these function calls to test your average function:
+print(average(1, 100))
+# The average of 1 and 100 is 50.5
+print(average(1, -1))
+# The average of 1 and -1 is 0
+
+
+
+# Write your remainder function here:
+
+def remainder(num1, num2):
+  result = (num1 * 2) % (num2/2)
+  return result
+
+# Uncomment these function calls to test your remainder function:
+print(remainder(15, 14))
+# should print 2
+print(remainder(9, 6))
+# should print 0
+
+
+# Write your first_three_multiples function here
+def first_three_multiples(num):
+  print(num)
+  print(num*2)
+  print(num*3)
+  return num*3
+  
+
+  
+# Uncomment these function calls to test your first_three_multiples function:
+first_three_multiples(10)
+# should print 10, 20, 30, and return 30
+first_three_multiples(0)
+# should print 0, 0, 0, and return 0
+
+
+# Write your tip function here:
+def tip(total, percentage):
+  result = (total * percentage) / 100
+  return result
+  
+# Uncomment these function calls to test your tip function:
+print(tip(10, 25))
+# should print 2.5
+print(tip(0, 100))
+# should print 0.0
+
+
+# Write your introduction function here:
+def introduction(first_name, last_name):
+  result = last_name + ", " + first_name + " " + last_name
+  return result
+  
+# Uncomment these function calls to test your introduction function:
+print(introduction("James", "Bond"))
+# should print Bond, James Bond
+print(introduction("Maya", "Angelou"))
+# should print Angelou, Maya Angelou
+
+
+# Write your dog_years function here:
+def dog_years(name, age):
+  result = str(name) + ", you are " + str(age*7) + " years old in dog years."  
+  return result
+
+# Uncomment these function calls to test your dog_years function:
+print(dog_years("Lola", 16))
+# should print "Lola, you are 112 years old in dog years"
+print(dog_years("Baby", 0))
+# should print "Baby, you are 0 years old in dog years"
+
+
+# Write your lots_of_math function here:
+def lots_of_math(a,b,c,d):
+  first = a+b
+  second = c-d
+  third = first*second
+  fourth = third % a
+  return first, second, third, fourth
+
+# Uncomment these function calls to test your lots_of_math function:
+print(lots_of_math(1, 2, 3, 4))
+# should print 3, -1, -3, 0
+print(lots_of_math(1, 1, 1, 1))
+# should print 2, 0, 0, 0
+
+
+
+*MORE PRACTICE - Physics Teacher example*
+
+train_mass = 22680
+train_acceleration = 10
+train_distance = 100
+
+bomb_mass = 1
+
+
+def f_to_c(f_temp):
+  return (f_temp -32) * 5/9
+
+f100_in_celsius = f_to_c(100)
+
+print(f100_in_celsius)
+
+def c_to_f(c_temp):
+  f_temp =  (c_temp * (9/5)) + 32
+  return f_temp
+
+c0_in_fahrenheit = c_to_f(0)
+
+print (c0_in_fahrenheit)
+
+
+def get_force(mass, acceleration):
+  return mass * acceleration
+
+train_force = get_force(train_mass, train_acceleration)
+
+print(train_force)
+
+
+print("The GE train supplies "+ str(train_force)+ " Newtons of force.")
+
+c = 3*10**8
+def get_energy(mass):
+  return mass * c
+
+bomb_energy = get_energy(bomb_mass) * c
+
+print(bomb_energy)
+
+print("A 1kg bomb supplies " + str(bomb_energy) + " Joules.")
+
+
+def get_work(mass, acceleration, distance):
+  force = get_force(mass, acceleration) 
+  return force * distance
+
+train_work = get_work(train_mass, train_acceleration, train_distance)
+
+print("The GE train does "+ str(train_work) + " Joules of work over "+ str(train_distance)+ " meters.")
+
+
+
   
 
