@@ -1,0 +1,229 @@
+*Boolean Expressions*
+
+
+statement_one = True
+
+statement_two = False
+
+statement_three = True
+
+
+my_baby_bool = "true"
+print(type(my_baby_bool))
+
+
+my_baby_bool_two = True
+print(type(my_baby_bool_two))
+
+
+*if statements*
+
+def dave_check(user_name):
+  if user_name == "Dave":
+    return "Get off my computer Dave!"
+
+  
+# Enter a user name here, make sure to make it a string
+user_name = "Dave"
+
+print(dave_check(user_name))
+
+
+
+def greater_than(x, y):
+  if x == y:
+      return "These numbers are the same"
+  if x < y:
+    return y
+  if x > y:
+    return x
+    
+    
+def graduation_reqs(credits):
+  if credits >= 120:
+    return "You have enough credits to graduate!"
+
+print(graduation_reqs(120))
+
+
+
+
+def graduation_reqs(gpa, credits):
+  if gpa >= 2.0 and credits >= 120:
+    return "You meet the requirements to graduate!"
+    
+ def graduation_mailer(gpa, credits):
+  if gpa >= 2.0 or credits >= 120:
+    return True
+    
+ 
+def graduation_reqs(gpa, credits):
+  if (gpa >= 2.0) and (credits >= 120):
+    return "You meet the requirements to graduate!"
+  if (gpa >= 2.0) and not (credits >= 120):
+    return "You do not have enough credits to graduate."
+  if not (gpa >= 2.0) and (credits >= 120):
+    return "Your GPA is not high enough to graduate."
+  if (gpa < 2.0) and (credits < 120):
+    return "You do not meet either requirement to graduate!"
+    
+    
+  def graduation_reqs(gpa, credits):
+  if (gpa >= 2.0) and (credits >= 120):
+    return "You meet the requirements to graduate!"
+  if (gpa >= 2.0) and not (credits >= 120):
+    return "You do not have enough credits to graduate."
+  if not (gpa >= 2.0) and (credits >= 120):
+    return "Your GPA is not high enough to graduate."
+  else:
+    return "You do not meet the GPA or the credit requirement for graduation."
+    
+    
+  def grade_converter(gpa):
+  grade="F"
+  if gpa >=4.0:
+    grade= "A"
+  elif gpa >=3.0:
+    grade= "B"
+  elif gpa >=2.0:
+    grade= "C"
+  elif gpa >=1.0:
+    grade= "D"
+  else:
+    grade= "F"
+  return grade
+  
+  
+  
+  
+  def raises_value_error():
+  raise ValueError
+
+try:
+  raises_value_error()
+except ValueError:
+  print("You raised a ValueError!")
+  
+  
+  
+  *PRACTICE*
+  
+  def applicant_selector(gpa, ps_score, ec_count):
+  if gpa >= 3 and ps_score >= 90 and ec_count >= 3:
+    return "This applicant should be accepted."
+  elif gpa >= 3 and ps_score >= 90 and not ec_count >= 3:
+    return "This applicant should be given an in-person interview."
+  else:
+    return "This applicant should be rejected."
+    
+  
+  def large_power(base, exponent):
+  if (base ** exponent) > 5000 :
+    return True
+  else:
+    return False
+    
+    
+ def over_budget(budget, food_bill, electricity_bill, internet_bill, rent):
+  if budget < (food_bill + electricity_bill + internet_bill + rent):
+    return True
+  else:
+    return False
+    
+def twice_as_large(num1, num2):
+  if num1 > (num2 * 2):
+    return True
+  else:
+    return False
+    
+def divisible_by_ten(num):
+  if num % 10 == 0:
+    return True
+  else:
+    return False
+
+
+def not_sum_to_ten(num1, num2):
+  if not num1 + num2 == 10:
+     return True
+  else:
+    return False
+    
+    
+ def in_range(num, lower, upper):
+  if num >= lower and num <= upper:
+    return True
+  else:
+    return False
+    
+ def same_name(your_name, my_name):
+  if your_name == my_name:
+    return True
+  else:
+    return False
+    
+def always_false(num):
+  if num == num:
+    return False
+    
+    
+def movie_review(rating):
+  if rating <= 5:
+    return "Avoid at all costs!"
+  elif rating > 5 and rating < 9:
+    return "This one was fun."
+  elif rating >= 9:
+    return "Outstanding!"
+ 
+ 
+ def max_num(num1, num2, num3):
+  if num1 > num2 and num1 > num3:
+    return num1
+  elif num2 > num1 and num2 > num3:
+    return num2
+  elif num3 > num2 and num3 > num1:
+    return num3
+  else:
+    return "It's a tie!"
+    
+ 
+ cost_pd = 125 
+
+def cost_gd(weight):
+  if weight <= 2:
+    return 20 + (weight * 1.5)
+  elif weight > 2 and weight <= 6:
+    return 20 + (weight * 3)
+  elif weight > 6 and weight <= 10:
+    return 20 + (weight *4)
+  else: 
+    return 20 + (weight * 4.75)
+
+print(cost_gd(8.4))
+
+def cost_dd(weight):
+  if weight <= 2:
+    return weight * 4.5
+  elif weight > 2 and weight <= 6:
+    return weight * 9
+  elif weight > 6 and weight <= 10:
+    return weight * 12
+  else: 
+    return weight * 14.25
+
+print (cost_dd(1.5))
+
+
+def best_price(weight):
+  if cost_pd < cost_gd(weight) and cost_pd < cost_dd(weight):
+    return "Premium delivery is cheapest with the price of " + str(cost_pd)
+  elif cost_gd(weight) < cost_pd and cost_gd(weight) < cost_dd(weight):
+    return "Ground delivery is cheapest with the price of " + str(cost_gd(weight))
+  elif cost_dd(weight) < cost_pd and cost_dd(weight)< cost_gd(weight):
+    return "Drone delivery is te best option with a price of " + str(cost_dd(weight))
+
+
+print(best_price(4.8))
+print(best_price(41.5))
+
+  
