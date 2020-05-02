@@ -1,0 +1,120 @@
+heights = [61, 70, 67, 64, 65]
+
+sam_height = ['Sam', 67]
+
+ages = [['Aaron', 15], ['Dhruti', 16]]
+
+
+
+names = ['Jenny', 'Alexus', 'Sam', 'Grace']
+dogs_names = ['Elphonse', 'Dr. Doggy DDS', 'Carter', 'Ralph']
+
+names_and_dogs_names  = zip(names, dogs_names)
+
+list_of_names_and_dogs_names = list(names_and_dogs_names)
+
+print(list_of_names_and_dogs_names)
+
+
+
+my_empty_list = []
+
+
+
+orders = ['daisies', 'periwinkle']
+orders.append('tulips')
+orders.append('roses')
+print(orders)
+
+
+orders = ['daisy', 'buttercup', 'snapdragon', 'gardenia', 'lily']
+# Create new orders here:
+new_orders = orders + ['lilac', 'iris']
+
+broken_prices = [5, 3, 4, 5, 4] + [4]
+print(broken_prices)
+
+
+
+list1 = range(9)
+list2 = range(8)
+
+list1 = range(5, 15, 3)
+list2 = range(0, 40, 5)
+
+
+first_names = ['Ainsley', 'Ben', 'Chani', 'Depak']
+age = []
+age.append(42)
+all_ages = [32, 41, 29] + age
+
+name_and_age = zip(first_names, age)
+
+ids = range(4)
+
+
+
+.extend allows me to add complete lists to each other
+my_range1 = [2, 9]
+my_range2 = [2, 9, 2]
+my_range1.extend(my_range2)
+print(my_range1)
+
+
+.insert allows me to specify the location and the value that’s added.
+my_range1.insert(1, “maria”)
+print(my_range1)
+[2, 'maria', 9, 2, 9, 2]
+
+
+.remove allows me to remove a specific item from the list
+my_range1.remove("maria")
+print(my_range1)
+[2, 9, 2, 9, 2]
+
+.clear empties the list
+my_range1.clear()
+print(my_range1)
+[]
+
+.pop removes the last element in a list
+my_range2 = [2, 9, 3]
+my_range2.pop()
+print(my_range2)
+[2, 9]
+
+.sort allows to sort a list in descending order
+my_range2 = [2, 9, 3]
+my_range2.sort
+print(my_range2)
+
+.reverse allows to reverse a list
+my_range2.reverse()
+print(my_range2)
+[3, 9, 2]
+
+.copy allows me to copy a list 
+My_range_copy = my_range2.copy()
+print(my_range_copy)
+
+
+
+
+last_semester_gradebook = [("politics", 80), ("latin", 96), ("dance", 97), ("architecture", 65)]
+
+subjects = ['physics', 'calculus', 'poetry', 'history']
+grades =  [98, 97, 85, 88]
+subjects.append('computer science')
+grades.append(100)
+
+gradebook = list(zip(subjects, grades))
+
+gradebook.append(("visual arts", 93))
+
+full_gradebook = last_semester_gradebook + gradebook
+print(full_gradebook)
+
+
+
+
+
