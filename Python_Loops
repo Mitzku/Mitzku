@@ -44,3 +44,114 @@ for i in ages:
 
     
   
+all_students = ["Alex", "Briana", "Cheri", "Daniele", "Dora", "Minerva", "Alexa", "Obie", "Arius", "Loki"]
+students_in_poetry = []
+
+while len(students_in_poetry) < 6:
+  element_to_add = all_students[-1]
+  students_in_poetry.append(element_to_add)
+  all_students.pop()
+
+print(students_in_poetry)
+
+
+sales_data = [[12, 17, 22], [2, 10, 3], [5, 12, 13]]
+scoops_sold = 0
+
+for location in sales_data:
+  for scoops in location:
+    scoops_sold = scoops_sold + scoops
+
+print(scoops_sold)
+
+
+
+heights = [161, 164, 156, 144, 158, 170, 163, 163, 157]
+can_ride_coaster = []
+
+for height in heights:
+  if height > 161:
+    can_ride_coaster.append(height)
+
+print(can_ride_coaster)
+
+
+celsius = [0, 10, 15, 32, -5, 27, 3]
+fahrenheit = [degree * 9/5 + 32 for degree in celsius]
+
+print(celsius)
+print(fahrenheit)
+
+
+
+
+single_digits = []
+
+i = 0
+while i < 10:
+  single_digits.append(i)
+  i += 1
+
+print(single_digits)
+
+squares = []
+
+for digits in single_digits:
+ squares.append(digits**2)
+
+print(squares)
+
+cubes = []
+
+for digits in single_digits:
+  cubes.append(digits**3)
+
+print(cubes)
+
+
+
+
+*PRACTICE*
+
+hairstyles = ["bouffant", "pixie", "dreadlocks", "crew", "bowl", "bob", "mohawk", "flattop"]
+
+prices = [30, 25, 40, 20, 20, 35, 50, 35]
+
+last_week = [2, 3, 5, 8, 4, 4, 6, 2]
+
+
+total_price = 0
+
+for price in prices:
+  total_price += price
+
+average_price = total_price / len(prices)
+
+print("Average Haircut Price: " + str(average_price))
+
+
+new_prices =  [price - 5 for price in prices]
+print(new_prices)
+
+
+total_revenue = 0
+for i in range(len(hairstyles)):
+  total_revenue += prices[i] * last_week[i]
+
+
+print("Total Revenue: " + str(total_revenue))
+average_daily_revenue = total_revenue / 7
+print(average_daily_revenue)
+
+cuts_under_30 = [new_prices[i] for i in range(len(new_prices)-1) if new_prices[i] < 30]
+ 
+
+print(cuts_under_30)
+
+
+
+
+
+
+
+
