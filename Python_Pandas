@@ -203,4 +203,19 @@ mylambda = lambda x: 'Welcome to BattleCity!' if x >= 13 else 'You must be over 
 
 
 
+import pandas as pd
+
+df = pd.read_csv('employees.csv')
+
+get_last_name = df.name.apply(lambda x: x.split()[-1])
+
+df['Last Name'] = get_last_name
+
+print(df)
+
+
+
+
+
+
 
