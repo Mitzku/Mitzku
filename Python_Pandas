@@ -216,6 +216,34 @@ print(df)
 
 
 
+*one has to write this in a row*
+total_earned = lambda row: row.hourly_wage * row.hours_worked if row.hours_worked <= 40 else (row.hourly_wage * 40) + (row.hours_worked - 40) * (row.hourly_wage * 1.5)
+
+*or use linebreaks*
+
+total_earned = lambda row: \
+row.hourly_wage * row.hours_worked \
+if row.hours_worked <= 40 \
+else (row.hourly_wage * 40) + (row.hours_worked - 40) * (row.hourly_wage * 1.5)
+
+*to add the column*
+df['total_earned'] = df.apply(total_earned,
+axis=1)
+
+
+
+
+*rename a column*
+
+df = pd.read_csv('imdb.csv')
+
+df.columns = ['ID', 'Title', 'Category', 'Year Released', 'Rating']
+
+df.rename(columns={
+  'name' : 'movie_title'},
+  inplace=True)
+
+print(df)
 
 
 
