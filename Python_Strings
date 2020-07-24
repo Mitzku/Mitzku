@@ -23,3 +23,75 @@ def account_generator(first_name, last_name):
 new_account = account_generator('Julie', 'Blevins')
 
 
+company_motto = "Copeland's Corporate Company helps you capably cope with the constant cacophony of daily life"
+
+second_to_last = company_motto[-2]
+final_word = company_motto[-4:]
+
+
+first_name = "Bob"
+last_name = "Daily"
+
+fixed_first_name = "R" + first_name[1:]
+
+print(fixed_first_name)
+
+
+
+*escpae characters*
+favorite_fruit_conversation = "He said, \"blueberries are my favorite!\""
+
+
+*Iterating through strings*
+
+def get_length(string):
+  counter = 0
+  for character in string:
+      counter += 1
+  return counter
+  
+
+
+*By including conditional statements inside of these iterations, we can start to do some really cool stuff.*
+
+favorite_fruit = "blueberry"
+counter = 0
+for character in favorite_fruit:
+  if character == "b":
+    counter = counter + 1
+print(counter)
+
+
+def letter_check(word, letter):
+  for x in word:
+    if x == letter:
+      return True
+    else:
+      return False
+
+
+
+
+def contains(big_string, little_string):
+  if little_string in big_string:
+   return True
+  else:
+    return False
+
+def common_letters(string_one, string_two):
+  list = []
+  for x in string_one:
+    if (x in string_two) and not x in list:
+      list.append(x)
+  return list
+  
+  
+def username_generator(first_name, last_name):
+  username = first_name[:3] + last_name[:4]
+  return username
+
+def password_generator(user_name):
+    password = ""
+    for i in range(0, len(user_name)):
+        password += user_name[i-1]
+    return password
