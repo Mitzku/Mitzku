@@ -8,6 +8,23 @@ df1 = pd.DataFrame({
 
 print(df1)
 
+*adding a column*
+
+*if all get the same value*
+df['Is taxed?'] = 'Yes'
+
+*if the values are different*
+df['Is taxed?`] = ['Yes', 'No', 'Yes']
+
+*with a calculation*
+df['Margin'] = df['Price'] - df['Cost to Manufacture']
+
+
+
+*Column Operations*
+df['Lowercase Name'] = df.Name.apply(lower)
+
+
 
 
 
