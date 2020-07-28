@@ -25,6 +25,8 @@ df['Margin'] = df['Price'] - df['Cost to Manufacture']
 df['Lowercase Name'] = df.Name.apply(lower)
 
 
+*applying a lambda funtion to a column'
+
 
 
 
