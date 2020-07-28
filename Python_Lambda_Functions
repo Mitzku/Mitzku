@@ -54,3 +54,7 @@ print (add_random(100))
 mylambda = lambda x: "Welcome to BattleCity!" if x >= 13 else "You must be over 13"
 
 
+get_last_name = lambda x: x.split()[-1]
+df['last_name'] = df.name.apply(lambda x: x.split()[-1])
+
+
