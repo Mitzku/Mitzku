@@ -47,3 +47,10 @@ add_random = lambda num: num + random.randint(1, 10)
 
 print (add_random(5))
 print (add_random(100))
+
+
+
+
+mylambda = lambda x: "Welcome to BattleCity!" if x >= 13 else "You must be over 13"
+
+
