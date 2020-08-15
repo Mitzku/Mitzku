@@ -18,7 +18,10 @@ print(King_England.shape)
 
 
 
-#function method where I struggle#
+#How can I write this as a function though?# 
+
+#idea 1#
+
 df = create_df()
 
 def create_df(word1, word2):
@@ -26,5 +29,12 @@ def create_df(word1, word2):
     df = pd.DataFrame(data)
     return df
 
+#idea 2 - I get stuck here and don't know how to return a dataframe / don't know how to print out the results using other words than King or England#
+def filter_words(word1, word2):
+    if row[' Question'] == word1 and row[' Question'] == word2:
+        return False
+    return row
+
+King_England = jeopardy.apply(filter_words, axis=1, broadcast=True)
 
 print(df("King", "England"))
