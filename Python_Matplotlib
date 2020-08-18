@@ -101,3 +101,18 @@ plt.plot(years, power_generated)
 plt.savefig('power_generated.png')
 
 plt.show()
+
+
+x = range(4)
+y1 = [100, 200, 150, 220]
+y2 = [90, 210, 130, 200]
+
+plt.plot(x, y1, color='pink', marker='o')
+plt.plot(x, y2, color='gray', marker='o')
+plt.xlabel('Amazing X-axis')
+plt.ylabel('Incredible Y-axis')
+plt.title('Two Lines on One Graph')
+plt.legend(['a', 'b'], loc=4)
+
+
+plt.show()
