@@ -164,6 +164,62 @@ plt.legend(['Location 1', 'Location 2'])
 plt.show()
 
 
+drinks = ["cappuccino", "latte", "chai", "americano", "mocha", "espresso"]
+ounces_of_milk = [6, 9, 4, 0, 9, 0]
+error = [0.6, 0.9, 0.4, 0, 0.9, 0]
+
+
+plt.bar(range(len(drinks)), ounces_of_milk, yerr=error, capsize=5, label='Ounces of Milk')
+plt.legend()
+ax=plt.subplot()
+ax.set_xticks(range(len(drinks)))
+ax.set_xticklabels(drinks)
+
+
+plt.show()
+
+
+
+
+months = range(12)
+month_names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+revenue = [16000, 14000, 17500, 19500, 21500, 21500, 22000, 23000, 20000, 19500, 18000, 16500]
+y_lower = [0.9 * i for i in revenue]
+y_upper = [1.1 * i for i in revenue]
+
+plt.fill_between(months, y_lower, y_upper, alpha=0.3)
+
+ax = plt.subplot()
+plt.plot(months, revenue)
+ax.set_xticks(months)
+ax.set_xticklabels(month_names)
+
+plt.show()
+
+
+payment_method_names = ["Card Swipe", "Cash", "Apple Pay", "Other"]
+payment_method_freqs = [270, 77, 32, 11]
+
+plt.pie(payment_method_freqs, autopct="%0.1f%%")
+plt.axis('equal')
+plt.legend(payment_method_names)
+
+plt.show()
+
+
+plt.hist(sales_times, range=(12,16), bins=20)
+
+plt.show()
+
+
+df = pd.read_csv('sales_times_s2.csv')
+print(df.head())
+
+plt.hist(sales_times1, bins=20, histtype='step', normed=True)
+plt.hist(sales_times2, bins=20, alpha=0.4, normed=True)
+
+plt.show()
+
 
 
 
