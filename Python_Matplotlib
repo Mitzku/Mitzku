@@ -116,3 +116,96 @@ plt.legend(['a', 'b'], loc=4)
 
 
 plt.show()
+
+
+#other graph styles#
+
+drinks = ["cappuccino", "latte", "chai", "americano", "mocha", "espresso"]
+sales =  [91, 76, 56, 66, 52, 27]
+
+plt.bar(range(len(drinks)), sales)
+ax = plt.subplot()
+ax.set_xticks(range(len(drinks)))
+ax.set_xticklabels(drinks, rotation=20)
+
+sales1 =  [91, 76, 56, 66, 52, 27]
+sales2 = [65, 82, 36, 68, 38, 40]
+
+n = 1  # This is our first dataset (out of 2)
+t = 2 # Number of datasets
+d = len(sales1) # Number of sets of bars
+w = 0.8 # Width of each bar
+store1_x = [t*element + w*n for element
+             in range(d)]
+plt.bar(store1_x, sales1)
+
+n = 2  # This is our first dataset (out of 2)
+t = 2 # Number of datasets
+d = len(sales2) # Number of sets of bars
+w = 0.8 # Width of each bar
+store2_x = [t*element + w*n for element
+             in range(d)]
+plt.bar(store2_x, sales2)
+
+
+plt.show()
+
+
+drinks = ["cappuccino", "latte", "chai", "americano", "mocha", "espresso"]
+sales1 =  [91, 76, 56, 66, 52, 27]
+sales2 = [65, 82, 36, 68, 38, 40]
+
+plt.bar(range(len(sales1)), sales1, label='Location 1')
+
+plt.bar(range(len(sales2)), sales2, bottom=sales1, label='Location 2')
+
+plt.legend(['Location 1', 'Location 2'])
+
+plt.show()
+
+
+
+
+
+#more practice#
+
+import codecademylib
+from matplotlib import pyplot as plt
+
+months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+visits_per_month = [9695, 7909, 10831, 12942, 12495, 16794, 14161, 12762, 12777, 12439, 10309, 8724]
+
+# numbers of limes of different species sold each month
+key_limes_per_month = [92.0, 109.0, 124.0, 70.0, 101.0, 79.0, 106.0, 101.0, 103.0, 90.0, 102.0, 106.0]
+persian_limes_per_month = [67.0, 51.0, 57.0, 54.0, 83.0, 90.0, 52.0, 63.0, 51.0, 44.0, 64.0, 78.0]
+blood_limes_per_month = [75.0, 75.0, 76.0, 71.0, 74.0, 77.0, 69.0, 80.0, 63.0, 69.0, 73.0, 82.0]
+
+
+plt.figure(figsize=(8, 8))
+
+x_values = range(len(months))
+
+ax1 = plt.subplot(1, 2, 1)
+plt.plot(x_values, visits_per_month, marker='o')
+plt.xlabel('Month')
+plt.ylabel('Visits')
+plt.title('Visits by Month')
+ax1.set_xticks(x_values)
+ax1.set_xticklabels(months)
+
+ax2 = plt.subplot(1, 2, 2)
+plt.plot(x_values, key_limes_per_month, color='#BFFF00')
+plt.plot(x_values, persian_limes_per_month, color='#C6D729')
+plt.plot(x_values, blood_limes_per_month, color='#8a0303')
+plt.legend(['Key Limes', 'Persian Limes', 'Blood Limes'])
+plt.xlabel('Month')
+plt.ylabel('Sold Limes')
+plt.title('Sold Limes by Month')
+ax2.set_xticks(x_values)
+ax2.set_xticklabels(months)
+
+plt.subplots_adjust(wspace=0.3, bottom=0.2)
+plt.savefig('Visits and Sales by Month.png')
+plt.show()
+
