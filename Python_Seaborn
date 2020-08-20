@@ -1,0 +1,78 @@
+import codecademylib3_seaborn
+import pandas as pd
+from matplotlib import pyplot as plt
+import seaborn as sns
+
+df = pd.read_csv('results.csv')
+print(df)
+
+
+sns.barplot(
+	data=df ,
+	x="Gender" ,
+	y="Mean Satisfaction"
+)
+plt.show()
+
+
+
+import numpy as np
+
+gradebook = pd.read_csv("gradebook.csv")
+print(gradebook)
+assignment1 = gradebook[gradebook.assignment_name == "Assignment 1"]
+print(assignment1)
+asn1_median=np.median(assignment1.grade)
+print(asn1_median)
+
+
+
+
+sns.barplot(data=gradebook, x="assignment_name", y="grade")
+plt.show()
+
+#Modify the bar plot so that the error bars represent one standard deviation, rather than 95% confidence intervals.#
+
+sns.barplot(data=gradebook, x="name", y="grade", ci='sd')
+plt.show()
+
+
+
+
+
+sns.barplot(
+  data=df,
+  x='Gender',
+  y='Response',
+  estimator=len
+)
+
+
+sns.barplot(
+  data=df,
+  x='Gender',
+  y='Response',
+  estimator=np.median
+)
+
+
+sns.barplot(
+  data=df,
+  x='Age Range',
+  y='Response',
+  hue='Gender'
+)
+
+
+sns.kdeplot(set_one, shade=True)
+
+sns.boxplot(data=df, x='label', y='value')
+plt.show()
+
+sns.violinplot(data=df, x='label', y='value')
+plt.show()
+
+sns.stripplot(x="day", y="total_bill", data=tips)
+
+
+
