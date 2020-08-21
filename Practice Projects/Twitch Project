@@ -1,0 +1,83 @@
+Part 1: Analyze Data with SQL
+
+Select * From stream
+Limit 20;
+
+Select * From chat
+Limit 20;
+
+Select DISTINCT game from stream;
+Select DISTINCT channel from stream;
+Select Distinct player from stream;
+
+Select game, Count(*)
+from stream
+Group By 1
+Order BY 2 DESC;
+
+Select country, Count(*)
+from stream
+Where game = 'League of Legends'
+Group BY 1
+Order by 2 DESC;
+
+Select player, Count(*) as 'Number of Streamers'
+from stream
+Group By 1
+Order By 2 DESC;
+
+
+
+SELECT game,
+ CASE
+  WHEN game = 'Dota 2' |'League of Legends' | 'Heroes of the Storm' THEN 'MOBA'
+    WHEN game = 'Counter-Strike: Global Offensive'
+      THEN 'FPS'
+    WHEN game = 'DayZ' | 'ARK: Survival Evolved'
+      THEN 'Survival'
+  ELSE 'Other'
+  END AS 'genre',
+  COUNT(*) as 'Number of Streamers by Game'
+
+FROM stream
+GROUP BY 1
+ORDER BY 3 DESC;
+
+
+SELECT
+ CASE
+  WHEN game = 'Dota 2'
+      THEN 'MOBA'
+  WHEN game = 'League of Legends' 
+      THEN 'MOBA'
+  WHEN game = 'Heroes of the Storm'
+      THEN 'MOBA'
+    WHEN game = 'Counter-Strike: Global Offensive'
+      THEN 'FPS'
+    WHEN game = 'DayZ'
+      THEN 'Survival'
+    WHEN game = 'ARK: Survival Evolved'
+      THEN 'Survival'
+  ELSE 'Other'
+  END AS 'genre',
+  COUNT(*) as 'Number of Streamers by Genre'
+FROM stream
+GROUP BY 1
+ORDER BY 2 DESC;
+
+
+
+Select strftime('%H', time), Count(*)
+From stream
+Where country = 'US'
+Group By 1;
+
+
+Select * 
+From stream
+Join chat
+  on stream.device_id = chat.device_id
+Limit 10;
+
+
+Part 2: Visualize Data with Matplotlib
