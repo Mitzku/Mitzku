@@ -64,6 +64,8 @@ sns.barplot(
 )
 
 
+
+
 sns.kdeplot(set_one, shade=True)
 
 sns.boxplot(data=df, x='label', y='value')
@@ -77,6 +79,49 @@ sns.stripplot(x="day", y="total_bill", data=tips)
 
 
 #World Cup Practice#
+
+
+import codecademylib3_seaborn
+from matplotlib import pyplot as plt
+import pandas as pd
+import seaborn as sns
+
+df = pd.read_csv('WorldCupMatches.csv')
+df['Total Goals']= df['Home Team Goals'] + df['Away Team Goals']
+
+df_goals = pd.read_csv('goals.csv')
+print(df_goals.head())
+print(df.head())
+
+sns.set_style("whitegrid")
+sns.set_context('notebook', font_scale = 1.25, rc={'axes.labelsize':22})
+
+
+
+f, ax1 = plt.subplots(figsize=(12, 7))
+
+plt.subplot(2, 1, 1)
+ax1 = sns.barplot(
+  data=df,
+  x='Year',
+  y='Total Goals',
+)
+plt.title('Barchart')
+
+
+plt.subplot(2, 1, 2)
+ax2 = sns.boxplot(
+  data=df_goals,
+  x='year',
+  y='goals',
+  palette='Spectral'
+)
+plt.title('Boxplot')
+
+plt.subplots_adjust(hspace=1)
+
+plt.show()
+
 
 
 
