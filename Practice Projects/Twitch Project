@@ -80,4 +80,39 @@ Join chat
 Limit 10;
 
 
-Part 2: Visualize Data with Matplotlib
+#Part 2: Visualize Data with Matplotlib#
+
+
+ax = plt.subplot()
+plt.bar(range(len(games)), viewers, color='green', label='# of Viewers')
+plt.title('Viewers by Game')
+plt.xlabel('Games')
+plt.ylabel('Views')
+plt.legend()
+ax.set_xticks(range(len(games)))
+ax.set_xticklabels(games, rotation=30)
+
+
+
+
+explode = (0.3, 0.2, 0.1, 0.2,0.1, 0.2,0.1, 0.2,0.1, 0.2, 0.1, 0.3)
+
+colors = ['lightskyblue', 'gold', 'lightcoral', 'gainsboro', 'royalblue', 'lightpink', 'darkseagreen', 'sienna', 'khaki', 'gold', 'violet', 'yellowgreen']
+
+plt.pie(countries, explode = explode, colors = colors, shadow=True, startangle=345, autopct='%1.0f%%', pctdistance=1.15)
+plt.title("League of Legends Viewers' Whereabouts")
+plt.legend(labels, loc='right')
+
+
+
+y_upper = [i*1.15 for i in viewers_hour]
+y_lower = [i*0.85 for i in viewers_hour]
+
+ax = plt.subplot()
+plt.fill_between(hour, y_upper, y_lower, alpha=0.2)
+plt.plot(hour, viewers_hour, linestyle ='--')
+plt.xlabel('Hour')
+plt.ylabel('Views')
+plt.title('View by Hour')
+ax.set_xticks(hour)
+
