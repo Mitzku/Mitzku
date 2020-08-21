@@ -45,3 +45,19 @@ ax.set_xticklabels(['April', 'May', 'June', 'July', 'August', 'September'])
 plt.ylabel('Average Order Price')
 plt.title('Order Price by Month')
 
+
+
+#How much has each customer on FoodWheel spent over the past six months? What can this tell us about the average FoodWheel customer?#
+
+orders = pd.read_csv('orders.csv')
+
+customer_amount = orders.groupby('customer_id').price.sum().reset_index()
+
+print(customer_amount.head())
+
+plt.hist(customer_amount.price, range=(0,200), bins=40)
+plt.xlabel('Total Spent')
+plt.ylabel('Number of Customers')
+plt.title('Bla')
+
+plt.show()
