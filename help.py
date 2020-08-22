@@ -3,10 +3,10 @@ pd.set_option('display.max_colwidth', -1)
 
 jeopardy = pd.read_csv('jeopardy.csv')
 
-#The taks: /
-Write a function that filters the dataset for questions that contains all of the words in a list of words. /
-For example, when the list ["King", "England"] was passed to our function, the function returned a DataFrame of 152 rows. /
-Every row had the strings "King" and "England" somewhere in its " Question".#
+# The taks: /
+# Write a function that filters the dataset for questions that contains all of the words in a list of words. /
+# For example, when the list ["King", "England"] was passed to our function, the function returned a DataFrame of 152 rows. /
+# Every row had the strings "King" and "England" somewhere in its " Question".#
 
 #boolean indexing works. Here I filter the jeopardy for only those entries where the column ' Question' contains 'King' and 'England'#
 
