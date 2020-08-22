@@ -18,7 +18,6 @@ plt.axis('equal')
 plt.show()
 
 
-
 orders = pd.read_csv('orders.csv')
 
 print orders.head()
@@ -45,7 +44,7 @@ ax.set_xticklabels(['April', 'May', 'June', 'July', 'August', 'September'])
 plt.ylabel('Average Order Price')
 plt.title('Order Price by Month')
 
-
+#bla
 
 #How much has each customer on FoodWheel spent over the past six months? What can this tell us about the average FoodWheel customer?#
 
