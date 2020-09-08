@@ -48,7 +48,7 @@ students = students.drop(columns='gender_age')
 print(students.head())
 
 
-
+# String Parsing
 
 name_split = students['full_name'].str.split(' ')
 
@@ -66,4 +66,30 @@ students.score = students.score.replace('[\%]', '', regex=True)
 students.score = pd.to_numeric(students.score)
 print(students.head())
 
+
+
+
+print(students.grade.head(5))
+
+split = students.grade.str.split('(\d+)', expand=True)
+students.grade = pd.to_numeric(split[1])
+
+print(students.dtypes)
+
+avg_grade = students.grade.mean()
+
+print(avg_grade)
+
+
+# Missing Values
+
+
+score_mean = students.score.mean()
+print(score_mean)
+
+students.score = students.score.fillna(value=0)
+
+score_mean_2 = students.score.mean()
+
+print(score_mean_2)
 
