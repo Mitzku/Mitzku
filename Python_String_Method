@@ -130,3 +130,89 @@ for i in highlighted_poems_details:
 def poem_title_card(poets, titles, dates):
   return "The poem {} was published by {} in {}.".format(titles, poets, dates)
 
+# Counting the number of unique characters
+
+letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+
+def unique_english_letters(word):
+  uniques = 0
+  for letter in letters:
+    if letter in word:
+      uniques += 1
+  return uniques
+
+print(unique_english_letters("mississippi"))
+
+
+# Counting a certain character in a word
+
+def count_char_x(word, x):
+  count = 0
+  for letter in word:
+    if x == letter:
+      count += 1
+  return count
+
+
+  print(count_char_x("mississippi", "s"))
+
+
+  print(len(mississippi.split('s')))
+
+
+# finding the number of phrases within a string. This method splits the string and deducts 1 from the end
+
+def count_multi_char_x(word, x):
+  splits = word.split(x)
+  return(len(splits)-1)
+
+print(count_multi_char_x("mississippi", "iss"))
+
+
+# an alternative neat solution
+
+def count_multi_char_x(word, x):
+  y = word.count(x)
+  return y
+
+
+
+# Identifying substrings between strings. This function should return the substring between the first occurrence of start and end in word. If start or end are not in word, the function should return word
+
+
+def substring_between_letters(word, start, end):
+  start_index = word.find(start)
+  end_index = word.find(end)
+  if word.count(start) > 0 and word.count(end) > 0:
+    return word[start_index+1:end_index]
+  else:
+    return word
+
+
+print(substring_between_letters("apple", "p", "e"))
+
+
+
+# Checking if words in a sentence have a certain length
+
+def x_length_words(sentence, x):
+  sentence_split = sentence.split(' ')
+  for word in sentence_split:
+    if len(word) < x:
+      return False
+    else:
+      return True
+
+
+print(x_length_words("i like apples", 2))
+
+
+
+# Check if a certain word appears in a string regardless of capitalization
+
+def check_for_name(sentence, name):
+  sentence_capitalized = sentence.upper()
+  name_capitalized = name.upper()
+  if sentence_capitalized.count(name_capitalized) > 0:
+    return True
+  return False
