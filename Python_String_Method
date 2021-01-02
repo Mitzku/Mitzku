@@ -216,3 +216,48 @@ def check_for_name(sentence, name):
   if sentence_capitalized.count(name_capitalized) > 0:
     return True
   return False
+
+
+  def count_multi_char_x(word, x):
+  splits = word.split(x)
+  return(len(splits)-1)
+
+print(count_multi_char_x("Gregor", "or"))
+# should print 1
+
+def substring_between_letters(word, start, end):
+  start_index = word.find(start)
+  end_index = word.find(end)
+  if word.count(start) > 0 and word.count(end) > 0:
+    return word[start_index+1:end_index]
+  else:
+    return word
+
+# Uncomment these function calls to test your function:
+print(substring_between_letters("apple", "p", "e"))
+# should print "pl"
+
+
+
+def check_for_name(sentence, name):
+  sentence_capitalized = sentence.upper()
+  name_capitalized = name.upper()
+  if sentence_capitalized.count(name_capitalized) > 0:
+    return True
+  return False
+
+# Uncomment these function calls to test your  function:
+print(check_for_name("My name is Jamie", "Jamie"))
+# should print True
+
+
+def every_other_letter(word):
+  output_string = ""
+  for letter in range(len(word)):
+    if letter % 2 == 0:
+      output_string += word[letter]
+  return output_string
+
+
+print(every_other_letter("Codecademy"))
+# should print Cdcdm
