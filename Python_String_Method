@@ -261,3 +261,44 @@ def every_other_letter(word):
 
 print(every_other_letter("Codecademy"))
 # should print Cdcdm
+
+
+def reverse_string(word):
+  output_string = ""
+  a = -1
+  for i in word:
+    output_string += word[a]
+    a = a - 1
+  return output_string
+
+# Uncomment these function calls to test your  function:
+print(reverse_string("Codecademy"))
+# should print ymedacedoC
+
+
+def make_spoonerism(word1, word2):
+  spooned_word1= word2[0] + word1[1:]
+  spooned_word2= word1[0] + word2[1:]
+  return "{} {}".format(spooned_word1, spooned_word2)
+
+
+
+# Uncomment these function calls to test your function:
+print(make_spoonerism("Codecademy", "Learn"))
+# should print Lodecademy Cearn
+
+
+
+def add_exclamation(word):
+  if len(word)>20:
+    return word
+  else:
+    while len(word)<20:
+      word += "!"
+    return word
+
+
+
+# Uncomment these function calls to test your function:
+print(add_exclamation("Codecademy"))
+# should print Codecademy!!!!!!!!!!
